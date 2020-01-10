@@ -32,13 +32,13 @@ jobs:
         run: npm i
 
       - name: Install cli tools
-        run: npm i -g firebase-tools
+        run: |
+          npm config set prefix ~/npm
+          npm i -g firebase-tools
 
-      - name: Deploy firestore rules
-        run: firebase deploy --only firestore
-
-      - name: Deploy storage rules
-        run: firebase deploy --only storage
-
-      - name: Deploy firebase functions
-        run: firebase deploy --only functions
+      - name: Deploy
+        run: |
+          export PATH="$PATH:$HOME/npm/bin"
+          firebase deploy --only firestore
+          firebase deploy --only storage
+          firebase deploy --only functions
