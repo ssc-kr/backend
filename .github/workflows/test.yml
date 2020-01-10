@@ -34,7 +34,7 @@ jobs:
       - name: Install cli tools
         run: |
           npm config set prefix ~/npm
-          npm i -g firebase-tools
+          npm i -g firebase-tools tslint
 
       - name: Deploy
         run: |
